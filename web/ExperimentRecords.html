@@ -811,25 +811,6 @@
 </head>
 
 <body for="html-export">
-  <header id="header">
-    <div id="load" v-show="loading"><img src="./data/T--CPU_CHINA--loading.gif" alt=""></div>
-    <div id="menu">
-      <div id="menuBack" v-show="isOpen" :class="isActive" @click="ifclick"></div>
-      <a href="../index.html"><img id="logo" src="./data/T--CPU_CHINA--ProjectLogo.png" alt="项目logo"></a>
-      <div id="select" @mouseleave="leave" @mouseover="on">
-        <img id="menuImg" :src="menu" alt="这是菜单图片" @mouseover="mouseover" @click="click">
-        <ul id="class-a" class="class" v-show="classA">
-          <li v-for="(item,index) in classList" :class="isActiveA == index? 'class-a' : ''" @click="classAClick(index)">
-            {{item}}</li>
-        </ul>
-        <ul id="class-b" class="class" v-show="classB">
-          <li v-for="item in classList2[isActiveA]" :class="isActiveB == item.num? 'class-b' : ''"
-            @mouseover="classBOver(item.num)" @mouseleave="classBLeave(item.num)"><a :href="item.url">
-              {{item.text}}</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
   <div class="mume markdown-preview  ">
     <h1 class="mume-header" id="experiment-records">Experiment Records</h1>
 
@@ -1479,38 +1460,6 @@
 
     <h4 class="mume-header" id="4-thermal-stability-of-mutants">4- Thermal stability of mutants</h4>
   </div>
-  <footer>
-    <div id="sponsor">
-      <img src="./web/data/Bottom/T--CPU_CHINA--Logoes.png" alt="">
-    </div>
-    <div id="connect">
-      <h4>Contact us</h4>
-      <ul id="contact">
-        <li>
-          <a href="https://weibo.com/u/6054819039">
-            <img src="./web/data/Bottom/T--CPU_CHINA--weibologo.png" alt="">
-            <p>@CPU_CHINA2021</p>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:cpu_china2021@163.com">
-            <img src="./web/data/Bottom/T--CPU_CHINA--emailLogo.png" alt="">
-            <p>cpu_china2021@163.com</p>
-          </a>
-        </li>
-        <li>
-          <a href="https://international.cpu.edu.cn/">
-            <img src="./web/data/Bottom/T--CPU_CHINA--CPUlogo.png" alt="">
-            <p>International Communication</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <script
-    src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/VueJS &action=raw&amp;ctype=text/javascript">
-    </script>
-  <script src="./js/common.js"></script>
 </body>
 
 </html>
