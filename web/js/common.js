@@ -77,10 +77,21 @@ var header = new Vue({
                 }
             ],
             [{
-                text: "Data and Records",
-                    url: "./DataRecords.html",
+                text: "Experiment Records",
+                    url: "./ExperimentRecords.html",
                     num: 0,
-            }]
+            },
+            {
+                text: "Data and Computing Codes",
+                    url: "./DataComputing Codes.html",
+                    num: 1,
+            },
+            {
+                text: "Data Accessibility Statements",
+                    url: "./DataAccessibilityStatements.html",
+                    num: 2,
+            }
+            ]
         ],
     },
     methods: {
