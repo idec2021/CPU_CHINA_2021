@@ -1,8 +1,8 @@
 # Wiki repoistory for iDEC 2021 | CPU_CHINA 2021
 
-(This a temporary README file that needs to be updated before you submit the team wiki. Please stay tuned at [idec.io](https://idec.io) for future relevant announcements.)
-
 This is the wiki repository for iDEC 2021, Team: CPU_CHINA 2021.
+
+This is a project based on the direct everlution of manganese peroxidase in degrading polyethylene (PE).
 
 The wiki created from this repository is hosted at [idec2021.github.io/CPU_CHINA_2021](https://idec2021.github.io/CPU_CHINA_2021).
 
