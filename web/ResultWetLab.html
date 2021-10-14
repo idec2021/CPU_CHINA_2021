@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResultWetLab</title>
+    <link rel="stylesheet"
+        href="https://2017.igem.org/wiki/index.php?title= Template:SCU_China/default_CSS &action=raw&ctype=text/css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/contentCommon.css">
+    <style>
+        #header #title {
+            left: 15%;
+        }
+
+        #contain .left img {
+            position: absolute;
+            width: 70%;
+            top: 180px;
+            left: 20%;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div id="load" v-show="loading"><img src="./data/T--CPU_CHINA--loading.gif" alt=""></div>
+        <div id="menu">
+            <div id="menuBack" v-show="isOpen" :class="isActive" @click="ifclick"></div>
+            <a href="../index.html"><img id="logo" src="./data/T--CPU_CHINA--ProjectLogo.png" alt="项目logo"></a>
+            <div id="select" @mouseleave="leave" @mouseover="on">
+                <img id="menuImg" :src="menu" alt="这是菜单图片" @mouseover="mouseover" @click="click">
+                <ul id="class-a" class="class" v-show="classA">
+                    <li v-for="(item,index) in classList" :class="isActiveA == index? 'class-a' : ''"
+                        @click="classAClick(index)">{{item}}</li>
+                </ul>
+                <ul id="class-b" class="class" v-show="classB">
+                    <li v-for="item in classList2[isActiveA]" :class="isActiveB == item.num? 'class-b' : ''"
+                        @mouseover="classBOver(item.num)" @mouseleave="classBLeave(item.num)"><a :href="item.url">
+                            {{item.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <img class="background" src="./data/TopBackground/3 result/T--CPU_CHINA--WetLab--Background.png" alt="">
+        <h1 id="title">RESULT WET LAB</h1>
+        <svg width="100%" height="100%" viewBox="0 0 1920 600" version="1.1"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1.16285,0,0,1.38837,253.426,-231.748)">
+                <g id="AD1">
+                    <path id="凹形遮罩"
+                        d="M1433.18,439.801C1433.18,439.801 1001.08,524.071 607.621,524.374C219.99,524.673 -217.935,439.801 -217.935,439.801L-217.935,944.811L1433.18,944.811L1433.18,439.801Z"
+                        style="fill:#FAFAFA;" />
+                </g>
+            </g>
+        </svg>
+    </header>
+    <div id="contain" class=" clearfix">
+        <div class="left clearfix">
+            <svg class="Frosting" width="70%" height="280px">
+                <defs>
+                    <pattern id="cardBg" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <image opacity="0.5" width="100" height="100" xlink:href="./data/T--CPU_CHINA--Frosting1.png" />
+                        <image class="fillLight" opacity="0.5" width="100" height="100"
+                            xlink:href="./data/T--CPU_CHINA--Frosting2.png" />
+                    </pattern>
+                </defs>
+                <g class="main">
+                    <g class="card">
+                        <rect fill="none" stroke="#ccc" opacity="0.75" stroke-width="3" width="100%" height="100%"
+                            rx="10" ry="10" opacity="0.6" />
+                        <rect fill="url(#cardBg)" width="100%" height="100%" rx="11" ry="11" opacity="0.6" />
+                    </g>
+                </g>
+            </svg>
+            <nav>
+                <div class="catalogue-title">RESULT WET LAB</div>
+                <ul class="catalogue">
+                    <li class="num">
+                        <a href="#section1" title="TEMPERATURE STABILITY ASSAY">TEMPERATURE STABILITY ASSAY</a>
+                    </li>
+
+                    <li class="num">
+                        <a href="#section2" title="pH STABILITY ASSAY">pH STABILITY ASSAY</a>
+                    </li>
+
+                    <li class="num">
+                        <a href="#section3" title="ORGANIC SOLVENT STABILITY ASSAY">ORGANIC SOLVENT STABILITY ASSAY</a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="./data/Left/T--CPU_CHINA--Keyboarding.png" alt="">
+        </div>
+        <div id="detail" class="clearfix">
+            <p><span>After fermentation of the aforementioned 4 mutants and wtMnP, the respective culture media
+                    containing
+                    crude enzymes were centrifuged at 15000 rpm for 30 minutes twice to acquire supernatants, which were
+                    used in
+                    the following three enzyme activity and stability assays with wtMnP as control group.</span></p>
+            <p><span>It is necessary to note that the results demonstrated below have omitted the data of mutant
+                </span><strong><span>1</span><sup><span>#</span></sup></strong><span> under different treatment
+                    conditions, due
+                    to the abnormally low enzyme activity of its supernatant, indicating occurrence of aberrant
+                    experimental
+                    conditions that we were unable to rectify due to a limit of time, or the internal loss of enzyme
+                    activity or
+                    stability that can be attributed to hazardous mutation. Therefore, only the activity data of mutant
+                    2</span><sup><span>#</span></sup><span>, 7</span><sup><span>#</span></sup><span>,
+                    8</span><sup><span>#</span></sup><span> were provided.</span></p>
+            <p>&nbsp;</p>
+            <div class="section" id="section1">
+                <h2>TEMPERATURE STABILITY ASSAY</h2>
+                <p><span>As shown in the </span><strong><span>Fig. 1</span></strong><span>, all the mutants and wtMnP
+                        shared the
+                        same trend of decrease with the increase of incubating temperature. Only mutant
+                    </span><strong><span>2</span><sup><span>#</span></sup></strong><span> seemed to exhibit a higher but
+                        insignificant improvement in thermal stability compared to wtMnP. </span></p>
+                <img src="./data/Result/WetLab/fig1.png">
+                <p class="imgdescribe"><strong><span>Fig. 1 Effect of temperature on the stability of mutant
+                            2</span><sup><span>#</span></sup><span>,
+                            7</span><sup><span>#</span></sup><span>, 8</span><sup><span>#</span></sup><span> and
+                            wtMnP.</span></strong><span> </span></p>
+                <p class="reference"><em><span>The initial MnP activity before incubation was
+                    set as 100%. WT
+                    refers to wtMnP without any mutantion.</span></em></p>
+            </div>
+            <div class="section" id="section2">
+                <h2>pH STABILITY ASSAY</h2>
+                <p><span>As shown in </span><strong><span>Fig. 2</span></strong><span>, compared to wtMnP, each mutant
+                        exhibited
+                        poorer stability after incubation at pH 5 to 7 for 12 hours. However, the stability of mutant
+                    </span><strong><span>2</span><sup><span>#</span></sup></strong><span> and
+                    </span><strong><span>8</span><sup><span>#</span></sup></strong><span> at pH 3 were significantly
+                        higher than
+                        that of wtMnP. The activity of mutant
+                    </span><strong><span>8</span><sup><span>#</span></sup></strong><span> at
+                        pH 3 remained 89.5% of its original activity before incubation, which was 46.5% higher than that
+                        of wtMnP. In
+                        the case of mutant </span><strong><span>7</span><sup><span>#</span></sup></strong><span>, it
+                        precipitated
+                        after 12 h incubation at pH 3, which may result in low residual MnP activity of 14.8%.</span>
+                </p>
+                <p><img src="./data/Result/WetLab/fig2.png"
+                        referrerpolicy="no-referrer" alt="pH all"></p>
+                <p class="imgdescribe"><strong><span>Fig. 2 Effect of pH on the stability of mutant mutant
+                            2</span><sup><span>#</span></sup><span>,
+                            7</span><sup><span>#</span></sup><span>, 8</span><sup><span>#</span></sup><span> and
+                            wtMnP.</span></strong><span> </span></p>
+                <p class="reference"><em><span>The initial MnP activity before incubation was
+                    set as 100%. WT
+                    refers to wtMnP without any mutantion.</span></em></p>
+            </div>
+            <div class="section" id="section3">
+                <h2>ORGANIC SOLVENT STABILITY ASSAY</h2>
+                <p><span>As shown in </span><strong><span>Fig. 3A</span></strong><span>, methanol had little effect on
+                        the MnP
+                        activity of each mutant as well as wtMnP under concentrations of 10% after 12 h incubation,
+                        which nearly
+                        remained 100% activity compared to the control. Besides, when the methanol concentration rose up
+                        to 30%, the
+                        mutant </span><strong><span>7</span><sup><span>#</span></sup></strong><span> showed an
+                        outstanding activity
+                        which reached up to 134.8%, while the wtMnP only remained 95.1% enzyme activity.</span></p>
+                <p><span>As for the effect of ethanol shown in </span><strong><span>Fig. 3B</span></strong><span>, the
+                        mutant
+                    </span><strong><span>7</span><sup><span>#</span></sup></strong><span> still possessed a remarkable
+                        stability,
+                        especially in the 30% ethanol which evidently surpassing 100%. Both the mutant
+                    </span><strong><span>2</span><sup><span>#</span></sup></strong><span> and
+                    </span><strong><span>7</span><sup><span>#</span></sup></strong><span> showed an increasing stability
+                        as the
+                        concentration of organic solvent cumulating from 10% to 30%, while the wtMnP leveled off at a
+                        relatively low
+                        degree.</span></p>
+                <p><img src="./data/Result/WetLab/fig3.png" alt="有机溶剂new"></p>
+                <p class="imgdescribe"><strong><span>Fig. 3 Effect of different concentrations of different organic solvents on the
+                            stability of
+                            mutant 2</span><sup><span>#</span></sup><span>, 7</span><sup><span>#</span></sup><span>,
+                            8</span><sup><span>#</span></sup><span> and wtMnP.</span></strong><span>
+                    </span></p>
+                <p class="reference"><em><span>The MnP activity
+                    without adding any organic solvent was set to 100% as the control.
+                </span><strong><span>A:</span></strong><span> The effect of different concentrations of methanol
+                    on MnP
+                    activity. </span><strong><span>B:</span></strong><span> The effect of different
+                    concentrations of ethanol on
+                    MnP activity. WT refers to wtMnP without any mutation.</span></em></p>
+                <p><span>As a result, mutant </span><strong><span>8</span><sup><span>#</span></sup></strong><span>
+                        showed a
+                        significant activity improvement under low pH condition, while mutant
+                    </span><strong><span>7</span><sup><span>#</span></sup></strong><span>’s organic solvent stability
+                        was remarkably
+                        improved.</span></p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div id="sponsor">
+            <img src="./data/Bottom/T--CPU_CHINA--Logoes.png" alt="">
+        </div>
+        <div id="connect">
+            <h4>Contact us</h4>
+            <ul id="contact">
+                <li>
+                    <a href="https://weibo.com/u/6054819039">
+                        <img src="./data/Bottom/T--CPU_CHINA--weibologo.png" alt="">
+                        <p>@CPU_CHINA2021</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:cpu_china2021@163.com">
+                        <img src="./data/Bottom/T--CPU_CHINA--emailLogo.png" alt="">
+                        <p>cpu_china2021@163.com</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://international.cpu.edu.cn/">
+                        <img src="./data/Bottom/T--CPU_CHINA--CPUlogo.png" alt="">
+                        <p>Interational Communication</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/VueJS &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/Jquery &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

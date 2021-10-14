@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety</title>
+    <link rel="stylesheet"
+        href="https://2017.igem.org/wiki/index.php?title= Template:SCU_China/default_CSS &action=raw&ctype=text/css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/contentCommon.css">
+    <style>
+        #header #title {
+            left: 35%;
+        }
+
+        #contain .left img {
+            position: absolute;
+            width: 70%;
+            top: 170px;
+            left: 12%;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div id="load" v-show="loading"><img src="./data/T--CPU_CHINA--loading.gif" alt=""></div>
+        <div id="menu">
+            <div id="menuBack" v-show="isOpen" :class="isActive" @click="ifclick"></div>
+            <a href="../index.html"><img id="logo" src="./data/T--CPU_CHINA--ProjectLogo.png" alt="项目logo"></a>
+            <div id="select" @mouseleave="leave" @mouseover="on">
+                <img id="menuImg" :src="menu" alt="这是菜单图片" @mouseover="mouseover" @click="click">
+                <ul id="class-a" class="class" v-show="classA">
+                    <li v-for="(item,index) in classList" :class="isActiveA == index? 'class-a' : ''"
+                        @click="classAClick(index)">{{item}}</li>
+                </ul>
+                <ul id="class-b" class="class" v-show="classB">
+                    <li v-for="item in classList2[isActiveA]" :class="isActiveB == item.num? 'class-b' : ''"
+                        @mouseover="classBOver(item.num)" @mouseleave="classBLeave(item.num)"><a :href="item.url">
+                            {{item.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <img class="background" src="./data/TopBackground/4 safety/T--CPU_CHINA--Safety--Background.png" alt="">
+        <h1 id="title">SAFETY</h1>
+        <svg width="100%" height="100%" viewBox="0 0 1920 600" version="1.1"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1.16285,0,0,1.38837,253.426,-231.748)">
+                <g id="AD1">
+                    <path id="凹形遮罩"
+                        d="M1433.18,439.801C1433.18,439.801 1001.08,524.071 607.621,524.374C219.99,524.673 -217.935,439.801 -217.935,439.801L-217.935,944.811L1433.18,944.811L1433.18,439.801Z"
+                        style="fill:#FAFAFA;" />
+                </g>
+            </g>
+        </svg>
+    </header>
+    <div id="contain" class=" clearfix">
+        <div class="left clearfix">
+            <svg class="Frosting" width="70%" height="300px">
+                <defs>
+                    <pattern id="cardBg" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <image opacity="0.5" width="100" height="100"
+                            xlink:href="./data/T--CPU_CHINA--Frosting1.png" />
+                        <image class="fillLight" opacity="0.5" width="100" height="100"
+                            xlink:href="./data/T--CPU_CHINA--Frosting2.png" />
+                    </pattern>
+                </defs>
+                <g class="main">
+                    <g class="card">
+                        <rect fill="none" stroke="#ccc" opacity="0.75" stroke-width="3" width="100%" height="100%"
+                            rx="10" ry="10" opacity="0.6" />
+                        <rect fill="url(#cardBg)" width="100%" height="100%" rx="11" ry="11" opacity="0.6" />
+                    </g>
+                </g>
+            </svg>
+            <nav>
+                <div class="catalogue-title">SAFETY</div>
+                <ul class="catalogue">
+                    <li class="num">
+                        <a href="#section1" title="PROLOGUE">PROLOGUE</a>
+                    </li>
+
+                    <li class="num">
+                        <a href="#section2" title="GENERAL SAFETY IN LABORATORY">GENERAL SAFETY IN LABORATORY</a>
+                    </li>
+
+                    <li class="num">
+                        <a href="#section3" title="SAFETY IN EXPERIMENT DESIGN">SAFETY IN EXPERIMENT DESIGN</a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="./data/Left/T--CPU_CHINA--experimentalize.png" alt="">
+        </div>
+        <div id="detail" class="clearfix">
+            <div class="section" id="section1">
+                <h2>
+                    PROLOGUE </h2>
+                <p>Safety is one of the most noteworthy issues in experiments. Therefore, CPU_CHINA 2021 has implemented
+                    several laboratory criteria to ensure the biosafety and biosecurity of our experiments.</p>
+            </div>
+
+            <div class="section" id="section2">
+                <h2>
+                    GENERAL SAFETY IN LABORATORY </h2>
+                <p>This year, all of our experiments are performed in BSL-1 laboratory. Before entering the laboratory,
+                    we are required to pass laboratory safety knowledge examination in order to establish basic
+                    cognitions on risk assessment, safety equipment, microbiological knowledge, emergency procedures and
+                    so forth. Also, before conducting experiments, we need to accept indispensable laboratory training
+                    regarding specific reagent and instrument usage. In this way, the general laboratory knowledge,
+                    common cautions and safety awareness were educated.</p>
+                <img src="./data/Safety/T--CPU_CHINA--Safety--1.png">
+                <center class="imgdescribe"><strong>Fig. 1 Laboratory safety education manual</strong></center>
+                <p>In addition, during the experiments, we strictly obey related laboratory regulations and experiment
+                    protocols. All team members are demanded to <em>wear gloves</em>, masks and lab coats. Eating and
+                    drinking in the lab are forbidden.</p>
+                <img src="./data/Safety/T--CPU_CHINA--Safety--2.png">
+                <center class="imgdescribe"><strong>Fig. 2 Masks, gloves and laboratory coats</strong></center>
+                <p>At the same time, given that we need to carry out many microbiological experiments, aseptic
+                    procedures should be standardized:</p>
+                <ul>
+                    <li>Gloves must be disinfected with 75% ethanol before conducting aseptic operations.</li>
+                    <li>All aseptic manipulations are carried out beside lighted alcohol lamps.</li>
+                    <li>Every culture medium is treated with high pressure steam sterilization in order to avoid
+                        contamination.</li>
+                    <li>Ultra clean bench will be exposed to UV light for more than 30 minutes for disinfection before
+                        use.</li>
+                </ul>
+                <img src="./data/Safety/T--CPU_CHINA--Safety--3.png">
+                <center class="imgdescribe"><strong>Fig. 3 Ultra clean bench</strong> </center>
+                <p>After experiments, with regard to the treatment of the waste , all waste bins or tanks are grouped
+                    into categories and placed in specified locations. The waste will be disposed of or recycled
+                    according to corresponding regulations.</p>
+                <img src="./data/Safety/T--CPU_CHINA--Safety--4.png">
+                <center class="imgdescribe"><strong>Fig. 4 Experimental waste bins</strong></center>
+            </div>
+
+            <div class="section" id="section3">
+                <h2>
+                    SAFETY IN EXPERIMENTAL DESIGN </h2>
+                <p>Considering biosafety, we choose <em>Escherichia coli</em> DH5alpha and <em>Pichia pastoris</em>
+                    GS115 as our chassis, as these organisms are categorized in risk group 1 and the iDEC white list,
+                    thus they are non-pathologic to human beings. The wild type MnP is derived from <em>Phanerochaete
+                        chrysosporium</em> belonging to risk group 1 organisms; and its corresponding mutants engineered
+                    by us do not possess new catalytic machinery. Therefore, handling and disposing these organisms and
+                    enzymes under strict experimental specification will not cause harm to the health of researchers and
+                    the environment.</p>
+                <p>Meanwhile, although being reprogrammed, the introduced coding sequences will not confer our
+                    engineered strains a strengthened environmental adaptive capacity and make them become more
+                    advantageous in species competition. Thus, these engineered strains post little risk to the
+                    environment. Despite all this, in view of standard aseptic operation that we undertake, the risk of
+                    engineered strains escaping or leaking into the environment is minimized.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div id="sponsor">
+            <img src="./data/Bottom/T--CPU_CHINA--Logoes.png" alt="">
+        </div>
+        <div id="connect">
+            <h4>Contact us</h4>
+            <ul id="contact">
+                <li>
+                    <a href="https://weibo.com/u/6054819039">
+                        <img src="./data/Bottom/T--CPU_CHINA--weibologo.png" alt="">
+                        <p>@CPU_CHINA2021</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:cpu_china2021@163.com">
+                        <img src="./data/Bottom/T--CPU_CHINA--emailLogo.png" alt="">
+                        <p>cpu_china2021@163.com</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://international.cpu.edu.cn/">
+                        <img src="./data/Bottom/T--CPU_CHINA--CPUlogo.png" alt="">
+                        <p>Interational Communication</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/VueJS &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/Jquery &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

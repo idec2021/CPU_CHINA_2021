@@ -1,0 +1,241 @@
+@font-face {
+  font-family: MONTSERRAT-BLACK1;
+  src: url("../font/T--CPU_CHINA--MONTSERRAT-BLACK1.woff") format("woff");
+}
+
+@font-face {
+  font-family: MONTSERRAT-BLACKITALIC2;
+  src: url("../font/T--CPU_CHINA--MONTSERRAT-BLACKITALIC2.woff") format("woff");
+}
+
+@font-face {
+  font-family: CABIN-REGULAR;
+  src: url("../font/T--CPU_CHINA--CABIN-REGULAR.woff") format("woff");
+}
+
+@font-face {
+  font-family: CABIN-ITALIC;
+  src: url("../font/T--CPU_CHINA--CABIN-ITALIC.woff") format("woff");
+}
+
+@font-face {
+  font-family: BLACKITALIC;
+  src: url("../font/T--CPU_CHINA--BLACKITALIC.woff") format("woff");
+}
+
+body {
+  background-color: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#contain {
+  margin-top: -12px;
+  padding: 0 3% 10%;
+  width: 100%;
+  background-color: #fafafa;
+  z-index: 1;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+  box-sizing: border-box;
+}
+
+#header #title {
+  position: fixed;
+  top: 8vw;
+  font-family: "MONTSERRAT-BLACKITALIC2";
+  line-height: normal;
+  font-weight: bolder;
+  font-size: 8vw;
+  color: #fafafa;
+  z-index: -1;
+}
+
+#header #load {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+#header #load img {
+  width: 50vmin;
+}
+
+#header #menu {
+  z-index: 10;
+}
+
+#header #menu #menuBack {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+#header #menu .menu {
+  background: #000000ad;
+}
+
+#header #menu #logo {
+  position: fixed;
+  top: 3vmin;
+  left: 1vmin;
+  width: 25vmin;
+  z-index: 11;
+}
+
+#header #menu #menuImg {
+  position: fixed;
+  top: 2vmin;
+  right: 1vmin;
+  width: 15vmin;
+  z-index: 11;
+}
+
+#header #menu .class {
+  position: fixed;
+  top: 14vmin;
+  z-index: 11;
+}
+
+#header #menu .class li {
+  padding: 6% 0;
+  margin: 2vmin;
+  border-radius: 30px;
+  text-align: center;
+  font-family: "MONTSERRAT-BLACKITALIC2";
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+#header #menu #class-a {
+  right: 1vmin;
+}
+
+#header #menu #class-a li {
+  width: 30vmin;
+  background-color: #fafafa;
+  border: #fafafa solid 3px;
+}
+
+#header #menu #class-a li:hover {
+  border: #0072fe solid 3px;
+}
+
+#header #menu #class-a .class-a {
+  background-color: #0072fe;
+  border: #0072fe solid 3px;
+  color: #fafafa;
+}
+
+#header #menu #class-b {
+  right: 33vmin;
+}
+
+#header #menu #class-b li {
+  border: #0072fe solid 2px;
+  width: 39vmin;
+}
+
+#header #menu #class-b li a {
+  color: #fafafa;
+}
+
+#header #menu #class-b li:active {
+  background-color: #0000008f;
+}
+#header #menu #class-b .class-b {
+  background-color: #00000047;
+}
+
+footer {
+  position: -webkit-sticky;
+  left: 0;
+  padding-bottom: 0.5vmin;
+  width: 100%;
+  background-color: #424242;
+}
+
+footer #sponsor {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0.5vmin;
+  padding-bottom: 3vmin;
+  top: -3vmin;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+footer #sponsor img {
+  width: 96%;
+}
+footer #connect {
+  position: relative;
+  margin: 0;
+  padding-top: 1vmin;
+  top: -8vmin;
+  width: 100%;
+  background-color: #424242;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+footer #connect #contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+footer #connect h4 {
+  margin: 1% 0 5vmin;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+footer #connect #contact li {
+  width: 33.3%;
+  border: #424242 solid 10px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+footer #connect #contact li:hover {
+  border: none;
+}
+
+footer #connect li img {
+  margin-bottom: 2vw;
+  width: 20%;
+}
+footer #connect li p {
+  color: #ffffff;
+  font-size: 1.1em;
+  text-align: center;
+}

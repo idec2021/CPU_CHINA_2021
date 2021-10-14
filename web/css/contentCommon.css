@@ -1,0 +1,424 @@
+#contain .left {
+    position: -webkit-sticky;
+    position: sticky;
+    float: left;
+    width: 25%;
+    top: 20%;
+}
+
+#contain .left .Frosting {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -o-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    z-index: 2;
+}
+
+#contain .left .catalogue-title {
+    position: absolute;
+    top: 30px;
+    left: 20%;
+    width: 60%;
+    text-align: center;
+    color: #202020;
+    font-size: large;
+    font-weight: 800;
+    z-index: 3;
+}
+
+#contain .left .catalogue {
+    position: absolute;
+    padding-left: 14px;
+    overflow: hidden;
+    top: 40px;
+    left: 10%;
+    width: 65%;
+    z-index: 3;
+}
+
+#contain .left .catalogue li {
+    color: #404040;
+    margin: 10%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 95%;
+    list-style: square inside url("../data/T--CPU_CHINA--circle.svg");
+}
+
+#contain .left .catalogue li:hover {
+    list-style: square inside url("../data/T--CPU_CHINA--circle2.svg");
+}
+
+#contain .left .catalogue .current {
+    color: #0071ff;
+    list-style: square inside url("../data/T--CPU_CHINA--circle2.svg");
+}
+
+#contain .left .catalogue li:hover a {
+    color: #0071ff;
+    text-decoration: none;
+}
+
+#contain .left .catalogue li:hover .circle {
+    fill: #0071ff;
+}
+
+#contain #detail {
+    float: right;
+    position: relative;
+    width: 65%;
+    margin-right: 8%;
+    padding:5%;
+    border-radius: 8px;
+    box-sizing: border-box;
+    line-height: 1.3em;
+    font-size: 1.1em;
+    font-family: "CABIN-REGULAR";
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+    -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+    -o-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+}
+
+#contain #detail h2 {
+    padding: 10% 0;
+    font-family: "MONTSERRAT-BLACKITALIC2";
+    font-size: 3em;
+    text-align: center;
+    line-height: normal;
+}
+
+#contain #detail h3 {
+    margin: 5% 0;
+    font-size: 2em;
+    font-family: "MONTSERRAT-BLACKITALIC2";
+    color: #424242;
+    text-align: center;
+    line-height: normal;
+}
+
+#contain #detail h4{
+    font-size: 1.5em;
+}
+
+#contain #detail p {
+    margin: 2% 0;
+    line-height: 1.3em;
+    font-size: 1.1em;
+    text-indent:2.2em;
+    text-align: justify;
+    font-family: "CABIN-REGULAR";
+}
+
+/* 图注 */
+#contain #detail .imgdescribe{
+    text-indent:0em;
+    text-align: left;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#contain #detail .center{
+    text-align: center;
+}
+
+/* 引用 */
+#contain #detail .reference{
+    text-indent:0em;
+    text-align: left;
+    font-size: 0.9em;
+    color: #636363;
+}
+#contain #detail strong{
+    font-weight: bold;
+}
+#contain #detail ol {
+	list-style: decimal;
+}
+
+#contain #detail ul {
+    list-style: disc;
+}
+#contain #detail a{
+    color: #0071fe;
+}
+#contain #detail a:hover{
+    color: #fa0909;
+}
+#contain #detail img {
+    width: 100%;
+    margin: 5% 0 2%;
+}
+#contain #detail em{
+    font-style: italic;
+}
+
+/* 下载按钮 */
+#contain #detail #downLoad {
+    position: relative;
+    margin: 2vw 0;
+    width: 100%;
+    height: 7vmin;
+    line-height: 7vmin;
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #D9D9D9 , #FFFFFF);
+}
+
+#contain #detail #downLoad span{
+    margin-left: 1vw;
+    font-size: 0.9em;
+}
+
+#contain #detail #downLoad a{
+    position: absolute;
+    right: 0;
+    width: 20%;
+    height: 7vmin;
+    line-height: 7vmin;
+    border: none;
+    text-align: center;
+    background-color: #0071ff;
+    color: #FAFAFA;
+    font-weight: bold;
+    font-size: 0.8em;
+    border-radius: 30px;
+}
+
+.current {
+    color: #0071ff;
+}
+
+.section {
+    margin-top: 30px;
+}
+
+#contain #detail .fundation{
+   margin: 5% 0;
+}
+
+#contain #detail figure{
+    margin: 5% 0;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+/* 滚动条宽度 */
+#contain #detail figure::-webkit-scrollbar {
+    height: 5px;
+}
+
+/* 滚动条轨道 */
+#contain #detail figure::-webkit-scrollbar-track {
+    background: #FAFAFA;
+    border-radius: 10px;
+}
+
+/* 小滑块 */
+#contain #detail figure::-webkit-scrollbar-thumb {
+    background: #c5daee49;
+    border-radius: 10px;
+    width: 5px;
+}
+
+#contain #detail figure::-webkit-scrollbar-thumb:hover {
+    background: #41a0ff;
+}
+
+#contain #detail table {
+    margin: 0;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    font-family: "CABIN-REGULAR";
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+    -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+    -o-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0) inset;
+}
+
+#contain #detail table tr {
+    text-align: center;
+}
+
+#contain #detail table thead tr,
+#contain #detail table tbody tr {
+    height: 50px;
+    /*background-color: pink;*/
+}
+
+#contain #detail table tr td {
+    display:table-cell; vertical-align:middle;
+    /*设置table表格每列底部边框*/
+    font-size: medium;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/*table tr:last-child td:first-child,
+table tr:last-child td:nth-child(2),
+table tr:last-child td:nth-child(3),
+table tr:last-child td:last-child{/!*设置table表格最后一列底部边框*!/
+    border-bottom: 2px solid #000;
+}*/
+#contain #detail table tr th {
+    display:table-cell; vertical-align:middle;
+    padding: 1vw;
+    border: none;
+    background: #0071fe;
+    font-family: "MONTSERRAT-BLACK1";
+    font-size: larger;
+    line-height: 1.5em;
+    color: #FAFAFA;
+
+}
+
+#contain #detail table tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+}
+
+#contain #detail table tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+}
+
+#contain #detail table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+#contain #detail table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+/* 轮播图 */
+#contain #detail .rotationChart{
+    margin: 2vw;
+}
+
+#contain #detail .rotationChart img{
+    margin: 0;
+    width: 100%;
+    border-radius: 20px;
+}
+
+#contain #detail .rotationChart #text{
+    margin: 1vmin 0;
+    position: relative;
+    height: 6vmin;
+    line-height: 6vmin;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: "BLACKITALIC";
+}
+
+#contain #detail .rotationChart button{
+    background-color: #0071fe;
+    width: 6vmin;
+    height: 6vmin;
+    border:none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #FAFAFA;
+    
+}
+
+#contain #detail .rotationChart button:nth-child(1){
+    position: absolute;
+    left: 0;
+}
+
+#contain #detail .rotationChart button:nth-child(2){
+    position: absolute;
+    right: 0;
+}
+
+#contain #detail .rotationChart #briefText{
+    width: 100%;
+    padding: 3vmin;
+    background-color: #EFEFEF;   
+    border-radius: 20px;
+}
+
+/* 文字切换 */
+#contain #detail #TextSwitch{
+    margin: 5% 0;
+    padding: 5%;
+    width: 100%;
+    border-radius: 20px;
+    color: white;
+    background: #0071fe;
+}
+
+#contain #detail #TextSwitch h5{
+    margin: 2% 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#contain #detail #TextSwitch .switchButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contain #detail #TextSwitch .switchButton input:nth-child(1){
+    width: 25px;
+    height: 25px;
+}
+
+#contain #detail #TextSwitch .switchButton input:nth-child(2){
+    height: 25px;
+    width: 25px;
+}
+
+@media screen and (max-width: 1024px){
+    #contain #detail #downLoad span{
+        font-size: 0.7em;
+    }
+}
+@media screen and (max-width: 850px){
+    #contain #detail #downLoad span{
+        font-size: 0.5em;
+    }
+}
+@media screen and (max-width: 730px) {
+    #contain #detail #downLoad span{
+        font-size: 0.4em;
+    }
+    #contain .left {
+        display: none;
+    }
+
+    #contain #detail {
+        width: 100%;
+        float: none;
+        padding: 5%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 450px){
+    #contain #detail h2{
+        font-size: 1.5em;
+    }
+    #contain #detail h3{
+        font-size: 1.2em;
+    }
+    #contain #detail h4{
+        font-size: 1.1em;
+    }
+    #contain #detail p{
+        font-size: 1em;
+        text-indent:2em;
+    }
+    #contain #detail figure{
+        overflow-x: auto;
+    }
+}

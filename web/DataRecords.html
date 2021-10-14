@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>iDEC Experiment Records</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+    code[class*="language-"],
+    pre[class*="language-"] {
+      color: #333;
+      background: none;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      word-wrap: normal;
+      line-height: 1.4;
+
+      -moz-tab-size: 8;
+      -o-tab-size: 8;
+      tab-size: 8;
+
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+    }
+
+    /* Code blocks */
+    pre[class*="language-"] {
+      padding: .8em;
+      overflow: auto;
+      /* border: 1px solid #ddd; */
+      border-radius: 3px;
+      /* background: #fff; */
+      background: #f5f5f5;
+    }
+
+    /* Inline code */
+    :not(pre)>code[class*="language-"] {
+      padding: .1em;
+      border-radius: .3em;
+      white-space: normal;
+      background: #f5f5f5;
+    }
+
+    .token.comment,
+    .token.blockquote {
+      color: #969896;
+    }
+
+    .token.cdata {
+      color: #183691;
+    }
+
+    .token.doctype,
+    .token.punctuation,
+    .token.variable,
+    .token.macro.property {
+      color: #333;
+    }
+
+    .token.operator,
+    .token.important,
+    .token.keyword,
+    .token.rule,
+    .token.builtin {
+      color: #a71d5d;
+    }
+
+    .token.string,
+    .token.url,
+    .token.regex,
+    .token.attr-value {
+      color: #183691;
+    }
+
+    .token.property,
+    .token.number,
+    .token.boolean,
+    .token.entity,
+    .token.atrule,
+    .token.constant,
+    .token.symbol,
+    .token.command,
+    .token.code {
+      color: #0086b3;
+    }
+
+    .token.tag,
+    .token.selector,
+    .token.prolog {
+      color: #63a35c;
+    }
+
+    .token.function,
+    .token.namespace,
+    .token.pseudo-element,
+    .token.class,
+    .token.class-name,
+    .token.pseudo-class,
+    .token.id,
+    .token.url-reference .token.variable,
+    .token.attr-name {
+      color: #795da3;
+    }
+
+    .token.entity {
+      cursor: help;
+    }
+
+    .token.title,
+    .token.title .token.punctuation {
+      font-weight: bold;
+      color: #1d3e81;
+    }
+
+    .token.list {
+      color: #ed6a43;
+    }
+
+    .token.inserted {
+      background-color: #eaffea;
+      color: #55a532;
+    }
+
+    .token.deleted {
+      background-color: #ffecec;
+      color: #bd2c00;
+    }
+
+    .token.bold {
+      font-weight: bold;
+    }
+
+    .token.italic {
+      font-style: italic;
+    }
+
+
+    /* JSON */
+    .language-json .token.property {
+      color: #183691;
+    }
+
+    .language-markup .token.tag .token.punctuation {
+      color: #333;
+    }
+
+    /* CSS */
+    code.language-css,
+    .language-css .token.function {
+      color: #0086b3;
+    }
+
+    /* YAML */
+    .language-yaml .token.atrule {
+      color: #63a35c;
+    }
+
+    code.language-yaml {
+      color: #183691;
+    }
+
+    /* Ruby */
+    .language-ruby .token.function {
+      color: #333;
+    }
+
+    /* Markdown */
+    .language-markdown .token.url {
+      color: #795da3;
+    }
+
+    /* Makefile */
+    .language-makefile .token.symbol {
+      color: #795da3;
+    }
+
+    .language-makefile .token.variable {
+      color: #183691;
+    }
+
+    .language-makefile .token.builtin {
+      color: #0086b3;
+    }
+
+    /* Bash */
+    .language-bash .token.keyword {
+      color: #0086b3;
+    }
+
+    /* highlight */
+    pre[data-line] {
+      position: relative;
+      padding: 1em 0 1em 3em;
+    }
+
+    pre[data-line] .line-highlight-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+      display: block;
+      width: 100%;
+    }
+
+    pre[data-line] .line-highlight {
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: inherit 0;
+      margin-top: 1em;
+      background: hsla(24, 20%, 50%, .08);
+      background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
+      pointer-events: none;
+      line-height: inherit;
+      white-space: pre;
+    }
+
+    pre[data-line] .line-highlight:before,
+    pre[data-line] .line-highlight[data-end]:after {
+      content: attr(data-start);
+      position: absolute;
+      top: .4em;
+      left: .6em;
+      min-width: 1em;
+      padding: 0 .5em;
+      background-color: hsla(24, 20%, 50%, .4);
+      color: hsl(24, 20%, 95%);
+      font: bold 65%/1.5 sans-serif;
+      text-align: center;
+      vertical-align: .3em;
+      border-radius: 999px;
+      text-shadow: none;
+      box-shadow: 0 1px white;
+    }
+
+    pre[data-line] .line-highlight[data-end]:after {
+      content: attr(data-end);
+      top: auto;
+      bottom: .4em;
+    }
+
+    html body {
+      font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+      overflow: initial;
+      box-sizing: border-box;
+      word-wrap: break-word
+    }
+
+    html body>:first-child {
+      margin-top: 0
+    }
+
+    html body h1,
+    html body h2,
+    html body h3,
+    html body h4,
+    html body h5,
+    html body h6 {
+      line-height: 1.2;
+      margin-top: 1em;
+      margin-bottom: 16px;
+      color: #000
+    }
+
+    html body h1 {
+      font-size: 2.25em;
+      font-weight: 300;
+      padding-bottom: .3em
+    }
+
+    html body h2 {
+      font-size: 1.75em;
+      font-weight: 400;
+      padding-bottom: .3em
+    }
+
+    html body h3 {
+      font-size: 1.5em;
+      font-weight: 500
+    }
+
+    html body h4 {
+      font-size: 1.25em;
+      font-weight: 600
+    }
+
+    html body h5 {
+      font-size: 1.1em;
+      font-weight: 600
+    }
+
+    html body h6 {
+      font-size: 1em;
+      font-weight: 600
+    }
+
+    html body h1,
+    html body h2,
+    html body h3,
+    html body h4,
+    html body h5 {
+      font-weight: 600
+    }
+
+    html body h5 {
+      font-size: 1em
+    }
+
+    html body h6 {
+      color: #5c5c5c
+    }
+
+    html body strong {
+      color: #000
+    }
+
+    html body del {
+      color: #5c5c5c
+    }
+
+    html body a:not([href]) {
+      color: inherit;
+      text-decoration: none
+    }
+
+    html body a {
+      color: #08c;
+      text-decoration: none
+    }
+
+    html body a:hover {
+      color: #00a3f5;
+      text-decoration: none
+    }
+
+    html body img {
+      max-width: 100%
+    }
+
+    html body>p {
+      margin-top: 0;
+      margin-bottom: 16px;
+      word-wrap: break-word
+    }
+
+    html body>ul,
+    html body>ol {
+      margin-bottom: 16px
+    }
+
+    html body ul,
+    html body ol {
+      padding-left: 2em
+    }
+
+    html body ul.no-list,
+    html body ol.no-list {
+      padding: 0;
+      list-style-type: none
+    }
+
+    html body ul ul,
+    html body ul ol,
+    html body ol ol,
+    html body ol ul {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    html body li {
+      margin-bottom: 0
+    }
+
+    html body li.task-list-item {
+      list-style: none
+    }
+
+    html body li>p {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    html body .task-list-item-checkbox {
+      margin: 0 .2em .25em -1.8em;
+      vertical-align: middle
+    }
+
+    html body .task-list-item-checkbox:hover {
+      cursor: pointer
+    }
+
+    html body blockquote {
+      margin: 16px 0;
+      font-size: inherit;
+      padding: 0 15px;
+      color: #5c5c5c;
+      background-color: #f0f0f0;
+      border-left: 4px solid #d6d6d6
+    }
+
+    html body blockquote>:first-child {
+      margin-top: 0
+    }
+
+    html body blockquote>:last-child {
+      margin-bottom: 0
+    }
+
+    html body hr {
+      height: 4px;
+      margin: 32px 0;
+      background-color: #d6d6d6;
+      border: 0 none
+    }
+
+    html body table {
+      margin: 10px 0 15px 0;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: block;
+      width: 100%;
+      overflow: auto;
+      word-break: normal;
+      word-break: keep-all
+    }
+
+    html body table th {
+      font-weight: bold;
+      color: #000
+    }
+
+    html body table td,
+    html body table th {
+      border: 1px solid #d6d6d6;
+      padding: 6px 13px
+    }
+
+    html body dl {
+      padding: 0
+    }
+
+    html body dl dt {
+      padding: 0;
+      margin-top: 16px;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: bold
+    }
+
+    html body dl dd {
+      padding: 0 16px;
+      margin-bottom: 16px
+    }
+
+    html body code {
+      font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+      font-size: .85em !important;
+      color: #000;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      padding: .2em 0
+    }
+
+    html body code::before,
+    html body code::after {
+      letter-spacing: -0.2em;
+      content: "\00a0"
+    }
+
+    html body pre>code {
+      padding: 0;
+      margin: 0;
+      font-size: .85em !important;
+      word-break: normal;
+      white-space: pre;
+      background: transparent;
+      border: 0
+    }
+
+    html body .highlight {
+      margin-bottom: 16px
+    }
+
+    html body .highlight pre,
+    html body pre {
+      padding: 1em;
+      overflow: auto;
+      font-size: .85em !important;
+      line-height: 1.45;
+      border: #d6d6d6;
+      border-radius: 3px
+    }
+
+    html body .highlight pre {
+      margin-bottom: 0;
+      word-break: normal
+    }
+
+    html body pre code,
+    html body pre tt {
+      display: inline;
+      max-width: initial;
+      padding: 0;
+      margin: 0;
+      overflow: initial;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: transparent;
+      border: 0
+    }
+
+    html body pre code:before,
+    html body pre tt:before,
+    html body pre code:after,
+    html body pre tt:after {
+      content: normal
+    }
+
+    html body p,
+    html body blockquote,
+    html body ul,
+    html body ol,
+    html body dl,
+    html body pre {
+      margin-top: 0;
+      margin-bottom: 16px
+    }
+
+    html body kbd {
+      color: #000;
+      border: 1px solid #d6d6d6;
+      border-bottom: 2px solid #c7c7c7;
+      padding: 2px 4px;
+      background-color: #f0f0f0;
+      border-radius: 3px
+    }
+
+    @media print {
+      html body {
+        background-color: #fff
+      }
+
+      html body h1,
+      html body h2,
+      html body h3,
+      html body h4,
+      html body h5,
+      html body h6 {
+        color: #000;
+        page-break-after: avoid
+      }
+
+      html body blockquote {
+        color: #5c5c5c
+      }
+
+      html body pre {
+        page-break-inside: avoid
+      }
+
+      html body table {
+        display: table
+      }
+
+      html body img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%
+      }
+
+      html body pre,
+      html body code {
+        word-wrap: break-word;
+        white-space: pre
+      }
+    }
+
+    .markdown-preview {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box
+    }
+
+    .markdown-preview .pagebreak,
+    .markdown-preview .newpage {
+      page-break-before: always
+    }
+
+    .markdown-preview pre.line-numbers {
+      position: relative;
+      padding-left: 3.8em;
+      counter-reset: linenumber
+    }
+
+    .markdown-preview pre.line-numbers>code {
+      position: relative
+    }
+
+    .markdown-preview pre.line-numbers .line-numbers-rows {
+      position: absolute;
+      pointer-events: none;
+      top: 1em;
+      font-size: 100%;
+      left: 0;
+      width: 3em;
+      letter-spacing: -1px;
+      border-right: 1px solid #999;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none
+    }
+
+    .markdown-preview pre.line-numbers .line-numbers-rows>span {
+      pointer-events: none;
+      display: block;
+      counter-increment: linenumber
+    }
+
+    .markdown-preview pre.line-numbers .line-numbers-rows>span:before {
+      content: counter(linenumber);
+      color: #999;
+      display: block;
+      padding-right: .8em;
+      text-align: right
+    }
+
+    .markdown-preview .mathjax-exps .MathJax_Display {
+      text-align: center !important
+    }
+
+    .markdown-preview:not([for="preview"]) .code-chunk .btn-group {
+      display: none
+    }
+
+    .markdown-preview:not([for="preview"]) .code-chunk .status {
+      display: none
+    }
+
+    .markdown-preview:not([for="preview"]) .code-chunk .output-div {
+      margin-bottom: 16px
+    }
+
+    .scrollbar-style::-webkit-scrollbar {
+      width: 8px
+    }
+
+    .scrollbar-style::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent
+    }
+
+    .scrollbar-style::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: rgba(150, 150, 150, 0.66);
+      border: 4px solid rgba(150, 150, 150, 0.66);
+      background-clip: content-box
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode]) {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      overflow: auto
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+      position: relative;
+      top: 0
+    }
+
+    @media screen and (min-width:914px) {
+      html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+        padding: 2em calc(50% - 457px + 2em)
+      }
+    }
+
+    @media screen and (max-width:914px) {
+      html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+        padding: 2em
+      }
+    }
+
+    @media screen and (max-width:450px) {
+      html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+        font-size: 14px !important;
+        padding: 1em
+      }
+    }
+
+    @media print {
+      html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+        display: none
+      }
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+      position: fixed;
+      bottom: 8px;
+      left: 8px;
+      font-size: 28px;
+      cursor: pointer;
+      color: inherit;
+      z-index: 99;
+      width: 32px;
+      text-align: center;
+      opacity: .4
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+      opacity: 1
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100%;
+      padding: 32px 0 48px 0;
+      font-size: 14px;
+      box-shadow: 0 0 4px rgba(150, 150, 150, 0.33);
+      box-sizing: border-box;
+      overflow: auto;
+      background-color: inherit
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+      width: 8px
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: rgba(150, 150, 150, 0.66);
+      border: 4px solid rgba(150, 150, 150, 0.66);
+      background-clip: content-box
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+      text-decoration: none
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+      padding: 0 1.6em;
+      margin-top: .8em
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li {
+      margin-bottom: .8em
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+      list-style-type: none
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+      left: 300px;
+      width: calc(100% - 300px);
+      padding: 2em calc(50% - 457px - 150px);
+      margin: 0;
+      box-sizing: border-box
+    }
+
+    @media screen and (max-width:1274px) {
+      html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+        padding: 2em
+      }
+    }
+
+    @media screen and (max-width:450px) {
+      html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+        width: 100%
+      }
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+      left: 50%;
+      transform: translateX(-50%)
+    }
+
+    html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+      display: none
+    }
+
+    /* Please visit the URL below for more information: */
+    /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+  </style>
+</head>
+
+<body for="html-export">
+  <header id="header">
+    <div id="load" v-show="loading"><img src="./data/T--CPU_CHINA--loading.gif" alt=""></div>
+    <div id="menu">
+      <div id="menuBack" v-show="isOpen" :class="isActive" @click="ifclick"></div>
+      <a href="../index.html"><img id="logo" src="./data/T--CPU_CHINA--ProjectLogo.png" alt="项目logo"></a>
+      <div id="select" @mouseleave="leave" @mouseover="on">
+        <img id="menuImg" :src="menu" alt="这是菜单图片" @mouseover="mouseover" @click="click">
+        <ul id="class-a" class="class" v-show="classA">
+          <li v-for="(item,index) in classList" :class="isActiveA == index? 'class-a' : ''" @click="classAClick(index)">
+            {{item}}</li>
+        </ul>
+        <ul id="class-b" class="class" v-show="classB">
+          <li v-for="item in classList2[isActiveA]" :class="isActiveB == item.num? 'class-b' : ''"
+            @mouseover="classBOver(item.num)" @mouseleave="classBLeave(item.num)"><a :href="item.url">
+              {{item.text}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="mume markdown-preview  ">
+    <h1 class="mume-header" id="experiment-records">Experiment Records</h1>
+
+    <h2 class="mume-header" id="2021818">2021.8.18</h2>
+
+    <p>operator: Peng Luo</p>
+    <h3 class="mume-header" id="site-specific-mutation">site specific mutation</h3>
+
+    <h4 class="mume-header" id="1-polymerase-chain-reactionpcr">1-Polymerase Chain Reaction(PCR)</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 1<sup>#</sup>-10<sup>#</sup></p>
+    <p><strong>PCR reaction system</strong>:</p>
+    <ul>
+      <li><strong>DNA Template</strong> : 1 &#x3BC;l plasmid of MnP</li>
+      <li><strong>DNA Polymerase and buffer system</strong> : 10 &#x3BC;l PrimerSTAR</li>
+      <li><strong>Primers</strong>: 1&#x3BC;l F-primer + 1&#x3BC;l R-primer</li>
+    </ul>
+    <p><strong>PCR amplified procedure:</strong></p>
+    <p>All the PCR components are mixed together and are taken through series of 3 major cyclic reactions conducted in
+      an automated, self-contained thermo-cycler machine.</p>
+    <ul>
+      <li>
+        <p><strong>Thermal denaturation</strong>: The reaction mixture was heated to 98&#x2103; for 3 min for
+          predegeneration.</p>
+      </li>
+      <li>
+        <p><strong>Denaturation</strong>: The reaction mixture was heated to 98&#x2103; for 1 min. During this, the
+          double stranded DNA is denatured to single strands due to breakage in weak hydrogen bonds.</p>
+      </li>
+      <li>
+        <p><strong>Annealing</strong>: The reaction temperature was rapidly lowered to 54&#xB0;C for 30 seconds. This
+          allows the primers to bind (anneal) to their complementary sequence in the template DNA.</p>
+      </li>
+      <li>
+        <p><strong>Elongation</strong>: The reaction mixture was heated to 72&#x2103; for 4 min. In this step, the
+          polymerase enzyme sequentially adds bases to the 3&#x2032; each primer, extending the DNA sequence in the
+          5&#x2032; to 3&#x2032; direction.</p>
+      </li>
+      <li>
+        <p><strong>Cyclic reactions</strong>: the step 2 3 4 were repeated for 30 times.</p>
+      </li>
+      <li>
+        <p><strong>Complementary extension</strong>: The reaction mixture was heated to 72&#x2103; for 10 min.</p>
+      </li>
+    </ul>
+    <h4 class="mume-header" id="2-age-agarose-gel-electrophoresis">2-AGE (agarose gel electrophoresis)</h4>
+
+    <p><strong>Materials:</strong> Agarose powder, 1 X TAE buffer (89 mM Tris-base, 89 mM boric acid and 2 mM EDTA)
+      prepared from 10 X TAE, Ethidium Bromide (5 mg/ml), Gel loading dye (Glycerol and orange dye),1 kb and 100 bp DNA
+      ladder, horizontal electrophoresis apparatus and power supply.</p>
+    <p><strong>Electrophoretic conditions</strong>: 130 V 25 min</p>
+    <ol>
+      <li>Measure the 0.25 grams of agarose to make 1% agarose gel (25 ml TAE buffer). Heat the solution to boiling in
+        the microwave to dissolve the agarose to produce a homogeneous mixture.</li>
+      <li>Add 0.5 &#x3BC;l of ethidium bromide to the dissolved agarose and mix .</li>
+      <li>Get a gel plate and a comb and put the two dams into the slots on each side of the gel plate. Make sure that
+        they fit tight. Pour the melted agarose onto the gel plate in the electrophoresis tray. Place the comb in its
+        place. Let the gel cool to room temperature and fully solidificated.</li>
+      <li>Place the gel in the electrophoresis chamber. Pour enough electrophoresis buffer (1 X TAE) to cover the gel to
+        prevent overheating of the gel.Carefully remove the comb.</li>
+      <li>Prepare the DNA sample by mixing around 20&#x3BC;l PCR product with 2 &#x3BC;l of loading dye.</li>
+      <li>Add 3 &#x3BC;l DNA ladder into the first well by using a micropipette. Carefully place the prepared samples
+        into adjacent wells.</li>
+      <li>Electrophorese the samples at 130 V for 25 minutes.</li>
+      <li>Carefully remove the gel, place it onto the UV light box and take a picture for the gel.</li>
+    </ol>
+    <h4 class="mume-header" id="3-fastpure-gel-dna-extraction">3- FastPure Gel DNA Extraction</h4>
+
+    <p><strong>Materials:</strong> FastPure Gel DNA Extraction Mini Kit (Vazyme Biotech)</p>
+    <p><strong>Protocol</strong>:</p>
+    <ol>
+      <li>After DNA electrophoresis for fractionating DNA fragments, excise the single stripe of DNA fragment from the
+        agarose gel under UV light. Weigh the gel slice (without microcentrifuge tube) to calculate its volume: The
+        volume of 100 mg gel slice is approximately<br>
+        100 &#x3BC;l, assuming the density is 1 g/ml.</li>
+      <li>Add 1 volume Buffer GDP, incubate at 50&#xB0;C- 55&#xB0;C for 7 - 10 min (according to the gel size, adjust
+        incubation time until the gel completely dissolved). Invert the tube 2 times during the incubation.</li>
+      <li>Spin briefly to bring the sample to the bottom of the tube, insert a FastPure DNA Mini Columns-G into a 2 ml
+        Collection Tube, carefully transfer the solution maximally of 700 &#x3BC;l once a time to the filtration
+        columns, centrifuge at 12,000 x g for 30 - 60 sec.</li>
+      <li>Discard the filtrate and reuse the Collection Tube, add 300 &#x3BC;l of Buffer GDP to the column, incubate at
+        room temperature for 1 min, centrifuge at 12,000 x g for 30 - 60 sec.</li>
+      <li>Discard the filtrate and reuse the Collection Tube, add 600 &#x3BC;l of Buffer GW (with ethanol added) to the
+        filtration column, centrifuge at 12,000 x g for 30 - 60 sec.</li>
+      <li>Repeat step 5.</li>
+      <li>Discard the filtrate and reuse the Collection Tube, centrifuge the empty column at 12,000 x g for 2 min.</li>
+      <li>Insert the column into a clean 1.5 ml microcentrifuge tube, add 7 &#x3BC;l - 30 &#x3BC;l of Elution Buffer to
+        the center of the column membrane, incubate for<br>
+        2 min, and then centrifuge at 12,000 x g for 1 min. Discard the filtration column, store DNA at -20&#x2103;.
+      </li>
+    </ol>
+    <h4 class="mume-header" id="4-dpnidigestion">4- Dpn&#x2160;digestion</h4>
+
+    <p><strong>The reaction system(20 &#x3BC;l):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Addition</th>
+          <th>Final concentration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10&#xD7;Buffer Tango (With BSA)</td>
+          <td>2 &#x3BC;L</td>
+          <td>1&#xD7;</td>
+        </tr>
+        <tr>
+          <td>Dpn I (10 U/&#x3BC;L)</td>
+          <td>0.5-2 &#x3BC;L</td>
+          <td>0.25-1 U/&#x3BC;L</td>
+        </tr>
+        <tr>
+          <td>DNA&#xFF08;0.5-1 &#x3BC;g/&#x3BC;L&#xFF09;</td>
+          <td>15 &#x3BC;L</td>
+          <td>25-50 ng/&#x3BC;L</td>
+        </tr>
+        <tr>
+          <td>Nuclease-free water</td>
+          <td>Up to 20 &#x3BC;L</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Procedure:</strong></p>
+    <p>The mixture was incutated in water bath at 37&#x2103; for 1 hour.</p>
+    <h4 class="mume-header" id="5-recombination">5- Recombination</h4>
+
+    <p><strong>Protocol:</strong></p>
+    <p>Set up the following reaction on ice:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Components</th>
+          <th>Addition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Linearized Vectors</td>
+          <td>20 &#x3BC;l</td>
+        </tr>
+        <tr>
+          <td>5&#xD7; CE &#x2161; Buffer</td>
+          <td>6 &#x3BC;l</td>
+        </tr>
+        <tr>
+          <td>Exnase &#x2161;</td>
+          <td>4 &#x3BC;l</td>
+        </tr>
+        <tr>
+          <td>ddH<sub>2</sub>O</td>
+          <td>to 30 &#x3BC;l</td>
+        </tr>
+      </tbody>
+    </table>
+    <ol start="2">
+      <li>
+        <p>Gently pipette up and down for several times to mix thoroughly. Spin briefly to bring the sample to the
+          bottom of the tube before reaction.</p>
+      </li>
+      <li>
+        <p>Incubate at 37&#xB0;C for 30 min and immediately place the tube at 4&#xB0;C or on ice.</p>
+      </li>
+    </ol>
+    <h4 class="mume-header" id="6-transformation">6- Transformation</h4>
+
+    <ol>
+      <li>Place the competent cells (DH5&#x3B1;) on ice</li>
+      <li>Pipet 10 &#x3BC;l of the recombination products to 50 &#x3BC;l of the competent cells, flip the tube several
+        times to mix thoroughly, and then place the tube still on ice for 30 min.</li>
+      <li>Heat-shock the tube at 42&#xB0;C for 45 sec and then immediately chill on ice for 2 - 3 min.</li>
+      <li>Add 450 &#x3BC;l of LB medium (without antibiotics) to the tube. Then, shake at 37&#xB0;C for 1 hour.</li>
+      <li>Preheat the LB plate which contains appropriate selection antibiotic at 37&#xB0;C.</li>
+      <li>Centrifuge the culture at 2,500 rpm for 3 min, discard 400 &#x3BC;l of supernatant. Then, re-suspend the
+        pellet with 100 &#x3BC;l of remaining medium and plate it on an agar plate which contains appropriate selection
+        antibiotic.</li>
+      <li>Incubate at 37&#xB0;C for 12 -16 hours.</li>
+    </ol>
+    <h2 class="mume-header" id="2021819">2021.8.19</h2>
+
+    <p>Operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-select-single-colony">1- Select single colony</h4>
+
+    <p><strong>Protocol</strong>: 3 single colonies were selected from each mutant, and added to 1 ml LB medium (with
+      1&#x2030; Amp), incubated at 37&#x2103;, 180 rpm.</p>
+    <h2 class="mume-header" id="2021820">2021.8.20</h2>
+
+    <p>Operator: RuYi Ma&#xFF1B;Peng Luo</p>
+    <h4 class="mume-header" id="1-polymerase-chain-reaction-pcr">1- Polymerase Chain Reaction (PCR)</h4>
+
+    <p>The protocol was the same as 8.18.</p>
+    <p><strong>Experimental groups</strong>: Mutant 1<sup>#</sup>-10<sup>#</sup></p>
+    <p><strong>PCR reaction system</strong>: (10&#x3BC;l)</p>
+    <ul>
+      <li><strong>DNA Template</strong> : 0.5 &#x3BC;l plasmid of MnP</li>
+      <li><strong>DNA Polymerase and buffer system</strong> : 5 &#x3BC;l PrimeSTAR</li>
+      <li><strong>Primers</strong>: 0.5 &#x3BC;l &#x3B1;-factor + 0.5 &#x3BC;l 3&apos;-AOX&#x2160;</li>
+      <li><strong>ddH<sub>2</sub>O:</strong> 3.5&#x3BC;l</li>
+    </ul>
+    <p><strong>Annealing:</strong> 59&#x2103; 15 s</p>
+    <p><strong>Elongation:</strong> 72&#x2103; 2 min</p>
+    <h4 class="mume-header" id="2-age-agarose-gel-electrophoresis-1">2- AGE (agarose gel electrophoresis)</h4>
+
+    <p>The protocol was the same as 8.18</p>
+    <h4 class="mume-header" id="3-send-the-microbial-samples-for-sequencing">3- Send the microbial samples for
+      sequencing</h4>
+
+    <h2 class="mume-header" id="2021823">2021.8.23</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-expansion-of-culture">1- Expansion of culture</h4>
+
+    <p>The sequencing results showed that the 1 and 7 were correct, and they were incubated into 100 ml LB medium at
+      37&#x2103;, 180 rpm.</p>
+    <h2 class="mume-header" id="2021824">2021.8.24</h2>
+
+    <p>operator: RuYi Ma&#xFF1B;Peng Luo</p>
+    <h3 class="mume-header" id="site-specific-mutation-1">Site specific mutation</h3>
+
+    <h4 class="mume-header" id="1-polymerase-chain-reactionpcr-1">1-Polymerase Chain Reaction(PCR)</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 2<sup>#</sup>, 6<sup>#</sup>, 8<sup>#</sup></p>
+    <p>**PCR reaction system **: (50&#x3BC;l)</p>
+    <ul>
+      <li><strong>DNA Template</strong> : 1 &#x3BC;l plasmid of MnP</li>
+      <li><strong>DNA Polymerase and buffer system</strong> : 25 &#x3BC;l PrimerSTAR</li>
+      <li><strong>Primers</strong>: 1 &#x3BC;l F-primer + 1 &#x3BC;l R-primer</li>
+      <li><strong>ddH<sub>2</sub>O:</strong> 22 &#x3BC;l</li>
+    </ul>
+    <h4 class="mume-header" id="2-age-agarose-gel-electrophoresis-2">2-AGE (agarose gel electrophoresis)</h4>
+
+    <h4 class="mume-header" id="3-fastpure-gel-dna-extraction-1">3- FastPure Gel DNA Extraction</h4>
+
+    <h4 class="mume-header" id="4-dpnidigestion-1">4- Dpn&#x2160;digestion</h4>
+
+    <h4 class="mume-header" id="5-recombination-1">5- Recombination</h4>
+
+    <h4 class="mume-header" id="6-transformation-1">6- Transformation</h4>
+
+    <p>The protocol of 2-6 were the same as 8.18</p>
+    <h2 class="mume-header" id="2021825">2021.8.25</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-select-single-colony2-6-8">1- Select single colony(2 6 8)</h4>
+
+    <p><strong>Protocol</strong>: 3 single colonies were selected from each mutant, and added to 1 ml LB medium (with
+      1&#x2030; Amp), incubated at 37&#x2103;, 180 rpm.</p>
+    <h4 class="mume-header" id="2-site-specific-mutationsegmented">2- site specific mutation(segmented)</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 3<sup>#</sup>, 4<sup>#</sup>, 5<sup>#</sup>, 9<sup>#</sup>,
+      10<sup>#</sup></p>
+    <ul>
+      <li>
+        <h5>PCR&#x2460;&#xFF1A;</h5>
+        <ul>
+          <li><strong>PCR reaction system</strong>: (20&#x3BC;l)
+            <ul>
+              <li><strong>DNA Template</strong> : 1 &#x3BC;l plasmid of MnP</li>
+              <li><strong>DNA Polymerase and buffer system</strong> : 10 &#x3BC;l PrimerSTAR</li>
+              <li><strong>Primers</strong>: 1&#x3BC;l &#x3B1;-factor + 1&#x3BC;l R-primer</li>
+              <li><strong>ddH<sub>2</sub>O:</strong> 7 &#x3BC;l</li>
+            </ul>
+          </li>
+          <li><strong>Annealing:</strong> 54&#x2103; 15 s</li>
+          <li><strong>Elongation:</strong> 72&#x2103; 10 s</li>
+        </ul>
+      </li>
+      <li>
+        <h5>PCR&#x2461;&#xFF1A;</h5>
+        <ul>
+          <li><strong>PCR reaction system</strong>:(20&#x3BC;l)
+            <ul>
+              <li><strong>DNA Template</strong> : 1 &#x3BC;l plasmid of MnP</li>
+              <li><strong>DNA Polymerase and buffer system</strong> : 10 &#x3BC;l PrimerSTAR</li>
+              <li><strong>Primers</strong>: 1&#x3BC;l F-primer + 1&#x3BC;l 3&#x2018;-AOX&#x2160;</li>
+              <li><strong>ddH<sub>2</sub>O:</strong> 7 &#x3BC;l</li>
+            </ul>
+          </li>
+          <li><strong>Annealing:</strong> 54&#x2103; 15 s</li>
+          <li><strong>Elongation:</strong> 72&#x2103; 10 s</li>
+        </ul>
+      </li>
+      <li>
+        <h5>AGE (agarose gel electrophoresis)</h5>
+      </li>
+      <li>
+        <h5>FastPure Gel DNA Extraction</h5>
+      </li>
+      <li>
+        <h5>PCR&#x2462;(overlap):</h5>
+        <ul>
+          <li><strong>PCR reaction system</strong>:(20&#x3BC;l)
+            <ul>
+              <li><strong>DNA Template</strong> : 1 &#x3BC;l plasmid of MnP</li>
+              <li><strong>DNA Polymerase and buffer system</strong> : 12.5 &#x3BC;l PrimerSTAR</li>
+              <li><strong>Primers</strong>: 1&#x3BC;l F-primer + 1&#x3BC;l 3&#x2018;-AOX&#x2160;</li>
+              <li><strong>ddH<sub>2</sub>O:</strong> 9.5 &#x3BC;l</li>
+            </ul>
+          </li>
+          <li><strong>Annealing:</strong> 59&#x2103; 5 s</li>
+          <li><strong>Elongation:</strong> 72&#x2103; 30 s</li>
+        </ul>
+      </li>
+      <li>
+        <h5>Double enzyme digestion:</h5>
+        <ul>
+          <li><strong>reaction system(50 &#x3BC;l)</strong>:
+            <ul>
+              <li>DNA Template: 6 &#x3BC;l</li>
+              <li>EcoR &#x2160;: 2 &#x3BC;l</li>
+              <li>Not &#x2160;: 2 &#x3BC;l</li>
+              <li>Green FastDigest buffer: 5 &#x3BC;l</li>
+              <li>ddH<sub>2</sub>O: 35 &#x3BC;l</li>
+            </ul>
+          </li>
+          <li><strong>protocol:</strong> the mixtures were incubated in water bath at 37&#x2103; for 30 min</li>
+        </ul>
+      </li>
+      <li>
+        <h5>Recombination</h5>
+      </li>
+      <li>
+        <h5>Transformation</h5>
+      </li>
+    </ul>
+    <h2 class="mume-header" id="2021826">2021.8.26</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-select-single-colony-3-4">1- Select single colony (3 4)</h4>
+
+    <h4 class="mume-header" id="2-site-specific-mutation-segmented">2- site specific mutation (segmented)</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 5<sup>#</sup>, 7<sup>#</sup>, 9<sup>#</sup>, 10<sup>#</sup></p>
+    <p>The protocols were same as 8.25</p>
+    <h2 class="mume-header" id="2021827">2021.8.27</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-select-single-colony-5-7-9-10">1- Select single colony (5 7 9 10)</h4>
+
+    <h2 class="mume-header" id="2021829830">2021.8.29/8.30</h2>
+
+    <p>operator: RuYi Ma</p>
+    <p>According to the present sequencing results, the mutant 1<sup>#</sup> was confirmed right.</p>
+    <p>Thus, other 9 mutants were site-specific mutated again.</p>
+    <h4 class="mume-header" id="1-site-specific-mutation-segmented">1- site specific mutation (segmented)</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 2<sup>#</sup>, 3<sup>#</sup>, 4<sup>#</sup>, 5<sup>#</sup>,
+      6<sup>#</sup>, 7<sup>#</sup>, 8<sup>#</sup>, 9<sup>#</sup>, 10<sup>#</sup></p>
+    <p>The protocols were same as 8.25</p>
+    <h2 class="mume-header" id="2021831">2021.8.31</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-expansion-of-culture-1">1- Expansion of culture</h4>
+
+    <p>The sequencing results showed that the mutant 2<sup>#</sup>, 6<sup>#</sup>, 7<sup>#</sup> were correct, and they
+      were incubated into 100 ml LB medium at 37&#x2103;, 180 rpm.</p>
+    <h4 class="mume-header" id="2-select-single-colony3-4-5-8-9-10">2- Select single colony(3 4 5 8 9 10)</h4>
+
+    <h2 class="mume-header" id="202191">2021.9.1</h2>
+
+    <p>operator: RuYi Ma, ZiYang Huang</p>
+    <h4 class="mume-header" id="1-site-specific-mutation">1- site specific mutation</h4>
+
+    <p>Using the newly arrived primer and tried mutant 3<sup>#</sup>, 4<sup>#</sup>, 5<sup>#</sup>, 9<sup>#</sup>,
+      10<sup>#</sup> again</p>
+    <p>The protocol was the same as 8.18</p>
+    <h4 class="mume-header" id="2-ez-500-spin-column-plasmid-max-preps-kit">2- EZ-500 Spin Column Plasmid Max-Preps kit
+    </h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 6<sup>#</sup>, 7<sup>#</sup></p>
+    <p><strong>materials:</strong></p>
+    <p>The EZ-500 Spin Column Plasmid Max-Preps kit.</p>
+    <h5 class="mume-header" id="procedure">Procedure:</h5>
+
+    <ul>
+      <li>Add 100-200 ml overnight culture (OD600=2.5-5) to a approprite centrifuge tube and centrifuge at 5,000 rpm for
+        10 minutes. Drain the liquid completely.</li>
+      <li>Add 10 ml of Solution I to the pellet, mix gently and keep on ice for 2 minute.</li>
+      <li>Add 10 ml of Solution II to the mixture, mix gently by inverting the tube 4-6 times and then keep at RT for 2
+        minutes.</li>
+      <li>Add 14 ml of Solution III, and mix gently. Incubate at RT for 2 minutes. Spin at 12,000 rpm for 15 minutes.
+      </li>
+      <li>Place column into a 50 ml collection tube. Transfer the above supernatant to the column, stand at RT for 5
+        minutes. Spin at 10000 rpm for 3-5 minutes.</li>
+      <li>Discard the flow-through in the tube. Add 5 ml of Wash Solution to the column, and spin at 8000 rpm for 3-5
+        minutes. Repeat this wash procedure.</li>
+      <li>Discard the flow-through in the collection tube. Spin at 10000 rpm for additional 5 minutes to remove residual
+        Wash Solution.</li>
+      <li>Transfer the column to a clean 50 ml microfuge tube. Add 1 ml of Elution Buffer into the center part of the
+        membrane of the column and incubate at 37 - 50&#xB0;C for 2 minutes. Spin at 10000 rpm for 2 minutes. Store DNA
+        in freezer at &#x2013;20&#xB0;C.</li>
+    </ul>
+    <h2 class="mume-header" id="202193">2021.9.3</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-select-single-colony-3-4-5-9-10">1- Select single colony (3 4 5 9 10)</h4>
+
+    <p>from the site specific mutation on 9.1</p>
+    <h4 class="mume-header" id="2-ez-500-spin-column-plasmid-max-preps-kit-1">2- EZ-500 Spin Column Plasmid Max-Preps
+      kit</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 2<sup>#</sup>, 7<sup>#</sup>, 8<sup>#</sup></p>
+    <h2 class="mume-header" id="202195">2021.9.5</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-condense-plasmids">1- Condense plasmids</h4>
+
+    <p>the concentration of plasmids (7 and 8) were not high enough to support the following experiments, thus
+      condensing operation was needed.</p>
+    <p><strong>materials:</strong> FastPure Gel DNA Extraction Mini Kit (Vazyme Biotech)</p>
+    <p>protocol was the same as gel DNA extraction</p>
+    <h2 class="mume-header" id="202196">2021.9.6</h2>
+
+    <p>operator: Wentao Chen</p>
+    <h4 class="mume-header" id="1-yeast-transformation-1-2-7-8">1- Yeast Transformation (1 2 7 8)</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 1 <sup>#</sup>, 2<sup>#</sup>, 7<sup>#</sup>, 8<sup>#</sup></p>
+    <h5 class="mume-header" id="procedure-for-preparation-of-competent-cells-50-ml-culture">Procedure for Preparation of
+      Competent Cells (50 ml culture)</h5>
+
+    <ul>
+      <li>Single colonies of GS115 were selected and inoculated in 10 mL YPD medium, and spent the night in a 30&#x2103;
+        shaker.</li>
+      <li>Transfer to 100 ml YPD liquid medium with 1% inoculation amount, and shaking at 30&#x2103; overnight until
+        OD=1.3-1.5.</li>
+      <li>The supernatant was centrifuged at 4000 rpm at 4&#x2103; for 5 min, and then discarded.</li>
+      <li>Add 100 ml ice pre-cooled sterile water to suspend the bacteria.</li>
+      <li>The supernatant was centrifuged at 4000 rpm at 4&#x2103; for 10 min, and then discarded.</li>
+      <li>Add 50 ml ice pre-cooled sterile water to suspend the bacteria.</li>
+      <li>The supernatant was centrifuged at 4000 rpm at 4&#x2103; for 10 min, and then discarded.</li>
+      <li>Wash it again with 20 ml 1 M sorbitol.</li>
+      <li>The supernatant was centrifuged at 4000 rpm at 4&#x2103; for 10 min, and then discarded.</li>
+      <li>Add 200 &#x3BC;l ice pre-cooled sorbitol to suspend the bacteria for transformation.</li>
+    </ul>
+    <h5 class="mume-header" id="procedure-for-linearizing-of-the-vector">Procedure for linearizing of the Vector</h5>
+
+    <ul>
+      <li>
+        <h5>the reaction mixture:</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Components</th>
+              <th>Addition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Plasmid</td>
+              <td>10 &#x3BC;g</td>
+            </tr>
+            <tr>
+              <td>FD Sac&#x2160;</td>
+              <td>5 &#x3BC;l</td>
+            </tr>
+            <tr>
+              <td>FD Buffer</td>
+              <td>5 &#x3BC;l</td>
+            </tr>
+            <tr>
+              <td>ddH<sub>2</sub>O</td>
+              <td>to 50 &#x3BC;l</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The mixture was incubated at 37&#x2103; for 1 hour.</p>
+      </li>
+      <li>
+        <h5>Desalting:</h5>
+        <ul>
+          <li>Thermofisher GeneJET PCR Purification Kit</li>
+        </ul>
+      </li>
+    </ul>
+    <h5 class="mume-header" id="procedure-for-transformation">Procedure for transformation</h5>
+
+    <ul>
+      <li>At least 80 &#x3BC;l yeast competent cells were added with 5-20 &#x3BC;g linearized plasmid, dissolved in 5-10
+        &#x3BC;l TE solution, and placed on ice for 5-15 min.</li>
+      <li>Quickly add to 0.2 cm shock cup (pre-cooled on ice). And click according to the <em>pichia pastoris</em>
+        parameters recommended by the device. [Voltage: 1.5 kV; capacitance: 25 uF; resistance: 20 &#x3A9;. Shock time:
+        4-10 msec]</li>
+      <li>Immediately add 1 ml pre-cooled 1 M sorbitol to the cup and transfer the contents to a 1.5-ml sterilizing
+        centrifuge tube.</li>
+      <li>Apply 200-600 &#x3BC;l bacterial body fluid to MD plate. At the same time, 80 ul GS115 strain was dissolved in
+        1 ml MD and coated in MD plate for control</li>
+      <li>The plate was incubated at 28&#x2103; until single colony appeared.</li>
+    </ul>
+    <h2 class="mume-header" id="202198">2021.9.8</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-expansion-of-culture-2">1- Expansion of culture</h4>
+
+    <p>The sequencing results showed that the mutant 5<sup>#</sup> was correct, and it was incubated into 100 ml LB
+      medium at 37&#x2103;, 180 rpm.</p>
+    <h2 class="mume-header" id="2021910">2021.9.10</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-preparation-of-induced-expression-medium-bmgybmmy">1- Preparation of induced
+      expression medium BMGY/BMMY</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>BMGY</th>
+          <th>BMMY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Yeast Extract 10 g/L</td>
+          <td>Yeast Extract 10 g/L</td>
+        </tr>
+        <tr>
+          <td>peptone 20 g/L</td>
+          <td>peptone 20 g/L</td>
+        </tr>
+        <tr>
+          <td>K<sub>2</sub>HPO<sub>4</sub> 3 g/L</td>
+          <td>K<sub>2</sub>HPO<sub>4</sub> 3 g/L</td>
+        </tr>
+        <tr>
+          <td>KH<sub>2</sub>PO4 11.8 g/L</td>
+          <td>KH<sub>2</sub>PO<sub>4</sub> 11.8 g/L</td>
+        </tr>
+        <tr>
+          <td>YNB 13.4 g/L</td>
+          <td>YNB 13.4 g/L</td>
+        </tr>
+        <tr>
+          <td>biotin 4&#xD7;10<sup>-4</sup> g/L</td>
+          <td>biotin 4&#xD7;10<sup>-4</sup> g/L</td>
+        </tr>
+        <tr>
+          <td>glycerin 1%</td>
+          <td>methanol 2%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Preparation method(1 L)</strong>:</p>
+    <ul>
+      <li>
+        <p>Dissolve 10 g Yeast Extract and 20 g peptone into 700 ml ddH<sub>2</sub>O, autoclaving at 121 &#x2103; for 20
+          min.</p>
+      </li>
+      <li>
+        <p>when the temperature drops to 55-60 &#x2103;, add 100 ml 1 M potassium phosphate buffer(pH 6.0), 100 ml 10
+          &#xD7; YNB, 2 ml 500&#xD7;biotin and 100 ml 10 &#xD7; glycerin or methanol in the clean bench</p>
+      </li>
+    </ul>
+    <h4 class="mume-header" id="1-select-yeast-monoclonal1-2-7-8">1- Select yeast monoclonal(1 2 7 8)</h4>
+
+    <p>Select a single yeast colony and incubated in a 250 ml flask with 50 ml BMGY medium and cultured at 28 &#x2103;,
+      280 rpm.</p>
+    <h2 class="mume-header" id="2021913">2021.9.13</h2>
+
+    <p>operator: RuYi Ma, Peng luo, Linyu Zheng, Wentao chen</p>
+    <h4 class="mume-header" id="1-site-specific-mutation3-4-9-10">1- Site specific mutation(3 4 9 10)</h4>
+
+    <p>the protocol was the same as 8.18, but using the new primer.</p>
+    <h4 class="mume-header" id="2-ez-500-spin-column-plasmid-max-preps-kit-2">2- EZ-500 Spin Column Plasmid Max-Preps
+      kit</h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 5<sup>#</sup>, 6<sup>#</sup></p>
+    <h4 class="mume-header" id="3-inducible-expression">3- Inducible expression</h4>
+
+    <ul>
+      <li>When the GS115 grew to OD600= 2-6, It was centrifuged at room temperature at 4000 g for 5 min, the thallus was
+        collected and resuspended with BMMY to make OD600=1.0, transfered to a 2 L flask.</li>
+      <li>The yeast was incubated at 28 &#x2103;, 280 rpm. Add chlorhematin to 0.1 g/L.</li>
+      <li>Add methanol to the medium every 24 h, until the concentration was 2%.</li>
+    </ul>
+    <h2 class="mume-header" id="2021914">2021.9.14</h2>
+
+    <p>operator: Wentao Chen</p>
+    <h4 class="mume-header" id="1-ez-500-spin-column-plasmid-max-preps-kit">1- EZ-500 Spin Column Plasmid Max-Preps kit
+    </h4>
+
+    <p><strong>Experimental groups</strong>: Mutant 5<sup>#</sup>, 6<sup>#</sup></p>
+    <h2 class="mume-header" id="2021917">2021.9.17</h2>
+
+    <p>operator: RuYi Ma, ZiYang Huang</p>
+    <h4 class="mume-header" id="1-collect-the-fungus-and-protein">1- Collect the fungus and protein</h4>
+
+    <ul>
+      <li>The mutant 1<sup>#</sup>, 2<sup>#</sup>, 7<sup>#</sup>, 8<sup>#</sup> were collected by centrifuged at 4000
+        rpm for 20 min.</li>
+      <li>And the supernate was centrifuged at 15000 rpm for 30 min twice.</li>
+      <li>The final supernate was collected as the crude enzyme solution.</li>
+    </ul>
+    <h2 class="mume-header" id="2021918">2021.9.18</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-preparation-of-induced-expression-medium-bmgybmmy-for-5-6-mnp">1- Preparation of
+      induced expression medium BMGY/BMMY for 5 6 MnP</h4>
+
+    <h2 class="mume-header" id="2021919">2021.9.19</h2>
+
+    <p>operator: RuYi Ma, ZiHan Yuan</p>
+    <h4 class="mume-header" id="1-the-ph-stability-of-mutants">1- The pH stability of mutants</h4>
+
+    <p>To evaluate the pH stability, the purified mutants were incubated in different pH(3-7) for 12 h at the room
+      temperature.</p>
+    <ul>
+      <li>The incubation process were held in 20 mM sodium malonate buffer(pH 5.5) with 100 mM NaCl and the residual MnP
+        activity were measured and calculated after 12 h.</li>
+    </ul>
+    <h4 class="mume-header" id="2-the-effect-of-different-organic-solvents-on-the-stability-of-mutants">2- The effect of
+      different organic solvents on the stability of mutants</h4>
+
+    <p>To evaluate the effect of different organic solvents on the stability of mutants, the purified mutants were
+      incubated in methanol and ethanol (10%-30%) for 12 h at the room temperature.</p>
+    <ul>
+      <li>The incubation process were held in 20 mM sodium malonate buffer (pH 5.5) with 100 mM NaCl and the residual
+        MnP activity were measured and calculated after 12 h.</li>
+    </ul>
+    <h4 class="mume-header" id="3-yeast-transformation5-6">3- Yeast Transformation(5 6)</h4>
+
+    <p>the protocol is the same as 9.6</p>
+    <h2 class="mume-header" id="2021920">2021.9.20</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-thermal-stability-of-mutants">1-Thermal stability of mutants</h4>
+
+    <p>To evaluate the thermal stability, the purified mutants were incubated at 30-70&#x2103; for 6 h.</p>
+    <ul>
+      <li>The incubation process were held in 20 mM sodium malonate buffer(pH 5.5) with 100 mM NaCl and the residual MnP
+        activity were measured and calculated every 2 h.</li>
+    </ul>
+    <h2 class="mume-header" id="2021921-924">2021.9.21-9.24</h2>
+
+    <p>operator: RuYi Ma</p>
+    <h4 class="mume-header" id="1-inducible-expression5-6-mnp">1- Inducible expression(5 6 MnP)</h4>
+
+    <p>the protocol was the same as 9.13</p>
+    <h2 class="mume-header" id="2021925-2021926">2021.9.25-2021.9.26</h2>
+
+    <p>operator: RuYi Ma, ZiYang Huang</p>
+    <h4 class="mume-header" id="1-collect-the-fungus-and-protein-1">1- Collect the fungus and protein</h4>
+
+    <h4 class="mume-header" id="2-the-ph-stability-of-mutants">2- The pH stability of mutants</h4>
+
+    <h4 class="mume-header" id="3-the-effect-of-different-organic-solvents-on-the-stability-of-mutants">3- The effect of
+      different organic solvents on the stability of mutants</h4>
+
+    <h4 class="mume-header" id="4-thermal-stability-of-mutants">4- Thermal stability of mutants</h4>
+  </div>
+  <footer>
+    <div id="sponsor">
+      <img src="./web/data/Bottom/T--CPU_CHINA--Logoes.png" alt="">
+    </div>
+    <div id="connect">
+      <h4>Contact us</h4>
+      <ul id="contact">
+        <li>
+          <a href="https://weibo.com/u/6054819039">
+            <img src="./web/data/Bottom/T--CPU_CHINA--weibologo.png" alt="">
+            <p>@CPU_CHINA2021</p>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:cpu_china2021@163.com">
+            <img src="./web/data/Bottom/T--CPU_CHINA--emailLogo.png" alt="">
+            <p>cpu_china2021@163.com</p>
+          </a>
+        </li>
+        <li>
+          <a href="https://international.cpu.edu.cn/">
+            <img src="./web/data/Bottom/T--CPU_CHINA--CPUlogo.png" alt="">
+            <p>International Communication</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <script
+    src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/VueJS &action=raw&amp;ctype=text/javascript">
+    </script>
+  <script src="./js/common.js"></script>
+</body>
+
+</html>

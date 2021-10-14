@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MethodDryLab</title>
+    <link rel="stylesheet"
+        href="https://2017.igem.org/wiki/index.php?title= Template:SCU_China/default_CSS &action=raw&ctype=text/css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/contentCommon.css">
+    <style>
+        #header #title {
+            left: 12%;
+        }
+
+        #contain .left img {
+            position: absolute;
+            width: 80%;
+            top: 180px;
+            left: 10%;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div id="load" v-show="loading"><img src="./data/T--CPU_CHINA--loading.gif" alt=""></div>
+        <div id="menu">
+            <div id="menuBack" v-show="isOpen" :class="isActive" @click="ifclick"></div>
+            <a href="../index.html"><img id="logo" src="./data/T--CPU_CHINA--ProjectLogo.png" alt="项目logo"></a>
+            <div id="select" @mouseleave="leave" @mouseover="on">
+                <img id="menuImg" :src="menu" alt="这是菜单图片" @mouseover="mouseover" @click="click">
+                <ul id="class-a" class="class" v-show="classA">
+                    <li v-for="(item,index) in classList" :class="isActiveA == index? 'class-a' : ''"
+                        @click="classAClick(index)">{{item}}</li>
+                </ul>
+                <ul id="class-b" class="class" v-show="classB">
+                    <li v-for="item in classList2[isActiveA]" :class="isActiveB == item.num? 'class-b' : ''"
+                        @mouseover="classBOver(item.num)" @mouseleave="classBLeave(item.num)"><a :href="item.url">
+                            {{item.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <img class="background" src="./data/TopBackground/2 Method/T--CPU_CHINA--DryLab--Background.png" alt="">
+        <h1 id="title">METHOD DRY LAB</h1>
+        <svg width="100%" height="100%" viewBox="0 0 1920 600" version="1.1"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1.16285,0,0,1.38837,253.426,-231.748)">
+                <g id="AD1">
+                    <path id="凹形遮罩"
+                        d="M1433.18,439.801C1433.18,439.801 1001.08,524.071 607.621,524.374C219.99,524.673 -217.935,439.801 -217.935,439.801L-217.935,944.811L1433.18,944.811L1433.18,439.801Z"
+                        style="fill:#FAFAFA;" />
+                </g>
+            </g>
+        </svg>
+    </header>
+    <div id="contain" class=" clearfix">
+        <div class="left clearfix">
+            <svg class="Frosting" width="70%" height="280px">
+                <defs>
+                    <pattern id="cardBg" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <image opacity="0.5" width="100" height="100" xlink:href="./data/T--CPU_CHINA--Frosting1.png" />
+                        <image class="fillLight" opacity="0.5" width="100" height="100"
+                            xlink:href="./data/T--CPU_CHINA--Frosting2.png" />
+                    </pattern>
+                </defs>
+                <g class="main">
+                    <g class="card">
+                        <rect fill="none" stroke="#ccc" opacity="0.75" stroke-width="3" width="100%" height="100%"
+                            rx="10" ry="10" opacity="0.6" />
+                        <rect fill="url(#cardBg)" width="100%" height="100%" rx="11" ry="11" opacity="0.6" />
+                    </g>
+                </g>
+            </svg>
+            <nav>
+                <div class="catalogue-title">METHOD DRY LAB</div>
+                <ul class="catalogue">
+                    <li class="num">
+                        <a href="#section1" title="ESM">ESM</a>
+                    </li>
+
+                    <li class="num">
+                        <a href="#section2" title="PLMC">PLMC</a>
+                    </li>
+
+                    <li class="num">
+                        <a href="#section3" title="MOLECULAR DYNAMICS">MOLECULAR DYNAMICS</a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="./data/Left/T--CPU_CHINA--flying.png" alt="">
+        </div>
+        <div id="detail" class="clearfix">
+            <div class="section" id="section1">
+                <h2 class="mume-header" id="1-esm">ESM</h2>
+                <p>To obtain an embedding (fixed-dimensional vector representation) for each mutated sequence and to
+                    train a
+                    regression model in sklearn that can predict the &quot;effect&quot; score given the embedding,</p>
+                <p>RUN:</p>
+                <p
+                    style="background-color: #424242;color: white;font-size: 0.8em;text-indent:0;text-align: left;padding:1%;width:100%;overflow-x:auto;white-space: nowrap;">
+                    python extract.py esm1_t34_670M_UR50S examples/3M5Q.fasta
+                    examples/Mnp_reprs/ --repr_layers 34 --include mean</p>
+                <div id="downLoad">
+                    <span>extract.py</span>
+                    <a href="./data/Method/DryLab/prediction.zip" download>ACCESS</a>
+                </div>
+            </div>
+            <div class="section" id="section2">
+                <h2 class="mume-header" id="2plmc">PLMC</h2>
+                <p>PLMC infers undirected graphical models to describe co-evolution and co-variation in biological
+                    sequence
+                    families. With a multi-sequence alignment as an input, PLMC can quantify inferred coupling strengths
+                    between all
+                    pairs of positions (couplingsfile output) or infer a generative model of the sequences for
+                    predicting mutation
+                    effects or designing new sequences (paramfile output).</p>
+            </div>
+            <div class="section" id="section3">
+                <h2 class="mume-header" id="3molecular-dynamics">MOLECULAR DYNAMICS</h2>
+
+                <p>Mainly based on the software.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div id="sponsor">
+            <img src="./data/Bottom/T--CPU_CHINA--Logoes.png" alt="">
+        </div>
+        <div id="connect">
+            <h4>Contact us</h4>
+            <ul id="contact">
+                <li>
+                    <a href="https://weibo.com/u/6054819039">
+                        <img src="./data/Bottom/T--CPU_CHINA--weibologo.png" alt="">
+                        <p>@CPU_CHINA2021</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:cpu_china2021@163.com">
+                        <img src="./data/Bottom/T--CPU_CHINA--emailLogo.png" alt="">
+                        <p>cpu_china2021@163.com</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://international.cpu.edu.cn/">
+                        <img src="./data/Bottom/T--CPU_CHINA--CPUlogo.png" alt="">
+                        <p>Interational Communication</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/VueJS &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/Jquery &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

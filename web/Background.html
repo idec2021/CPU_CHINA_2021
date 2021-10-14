@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BACKGROUND</title>
+    <link rel="stylesheet"
+        href="https://2017.igem.org/wiki/index.php?title= Template:SCU_China/default_CSS &action=raw&ctype=text/css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/contentCommon.css">
+    <style>
+        #header #title {
+            left: 20%;
+        }
+
+        #contain .left img {
+            position: absolute;
+            width: 80%;
+            top: 100px;
+            left: 12%;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div id="load" v-show="loading"><img src="./data/T--CPU_CHINA--loading.gif" alt=""></div>
+        <div id="menu">
+            <div id="menuBack" v-show="isOpen" :class="isActive" @click="ifclick"></div>
+            <a href="../index.html"><img id="logo" src="./data/T--CPU_CHINA--ProjectLogo.png" alt="项目logo"></a>
+            <div id="select" @mouseleave="leave" @mouseover="on">
+                <img id="menuImg" :src="menu" alt="这是菜单图片" @mouseover="mouseover" @click="click">
+                <ul id="class-a" class="class" v-show="classA">
+                    <li v-for="(item,index) in classList" :class="isActiveA == index? 'class-a' : ''"
+                        @click="classAClick(index)">{{item}}</li>
+                </ul>
+                <ul id="class-b" class="class" v-show="classB">
+                    <li v-for="item in classList2[isActiveA]" :class="isActiveB == item.num? 'class-b' : ''"
+                        @mouseover="classBOver(item.num)" @mouseleave="classBLeave(item.num)"><a :href="item.url">
+                            {{item.text}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <img class="background" src="./data/TopBackground/1 project/T--CPU_CHINA--Designe--Background.png" alt="">
+        <h1 id="title">BACKGROUND</h1>
+        <svg width="100%" height="100%" viewBox="0 0 1920 600" version="1.1"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1.16285,0,0,1.38837,253.426,-231.748)">
+                <g id="AD1">
+                    <path id="凹形遮罩"
+                        d="M1433.18,439.801C1433.18,439.801 1001.08,524.071 607.621,524.374C219.99,524.673 -217.935,439.801 -217.935,439.801L-217.935,944.811L1433.18,944.811L1433.18,439.801Z"
+                        style="fill:#FAFAFA;" />
+                </g>
+            </g>
+        </svg>
+    </header>
+    <div id="contain" class=" clearfix">
+        <div class="left clearfix">
+            <svg class="Frosting" width="70%" height="200px">
+                <defs>
+                    <pattern id="cardBg" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <image opacity="0.5" width="100" height="100" xlink:href="./data/T--CPU_CHINA--Frosting1.png" />
+                        <image class="fillLight" opacity="0.5" width="100" height="100"
+                            xlink:href="./data/T--CPU_CHINA--Frosting2.png" />
+                    </pattern>
+                </defs>
+                <g class="main">
+                    <g class="card">
+                        <rect fill="none" stroke="#ccc" opacity="0.75" stroke-width="3" width="100%" height="100%"
+                            rx="10" ry="10" opacity="0.6" />
+                        <rect fill="url(#cardBg)" width="100%" height="100%" rx="11" ry="11" opacity="0.6" />
+                    </g>
+                </g>
+            </svg>
+            <nav>
+                <div class="catalogue-title">BACKGROUND</div>
+                <ul class="catalogue">
+                    <li class="num">
+                        <a href="#section1" title="BACKGROUND">BACKGROUND</a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="./data/Left/T--CPU_CHINA--walking.png" alt="">
+        </div>
+        <div id="detail" class="clearfix">
+            <div class="section" id="section1">
+                <h2>BACKGROUND</h2>
+                <p>Manganese peroxidase (MnP) is a highly glycosylated, heme-containing<sup>1</sup> lignin peroxidase. It is derived
+                    from white-rot fungi in carbon or nitrogen deficiency environment. In many reports, it can be used to oxidatively
+                    degrade lignin and azo dyes. The oxidation effect of MnP comes from the Mn<sup>3+</sup> produced by the hydrogen
+                    peroxide-dependent oxidation of Mn<sup>2+</sup>.</p>
+                  <img src="./data/Project/background/fig1.png" alt="">
+                  <p class="imgdescribe center">Fig 1 Catalytic cycle of manganese peroxidase.<sup>2</sup></p>
+                  <p>The heme ligand in the active center of MnP can progressively form complex I-complex III in the presence of
+                    hydrogen peroxide. The Mn3+ produced in the process will form a complex with oxalate and be released from the
+                    enzyme, becoming a kind of Diffusion redox medium.</p>
+                  <p>On this basis, we designed a molecular machine with MnP as the main functional enzyme, hoping to use the
+                    oxidation properties of MnP to degrade polyethylene.When verifying the process of molecular machines, we found
+                    that the stability of manganese peroxidase in the actual working environment needs to be improved. Therefore, we
+                    hope to use directed evolution to optimize the performance of MnP.</p>
+                  <p><strong>Reference</strong></p>
+                  <p class="reference">1 Mart&#xED;nez, A. T. et al. Oxidoreductases on their way to industrial biotransformations. Biotechnol
+                    Adv 35, 815-831, doi:10.1016/j.biotechadv.2017.06.003 (2017).</p>
+                  <p class="reference">2 Kumar, A. &amp; Chandra, R. Ligninolytic enzymes and its mechanisms for degradation of
+                    lignocellulosic waste in environment. Heliyon 6, e03170-e03170,<br>
+                    doi:10.1016/j.heliyon.2020.e03170 (2020).</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer>
+        <div id="sponsor">
+            <img src="./data/Bottom/T--CPU_CHINA--Logoes.png" alt="">
+        </div>
+        <div id="connect">
+            <h4>Contact us</h4>
+            <ul id="contact">
+                <li>
+                    <a href="https://weibo.com/u/6054819039">
+                        <img src="./data/Bottom/T--CPU_CHINA--weibologo.png" alt="">
+                        <p>@CPU_CHINA2021</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:cpu_china2021@163.com">
+                        <img src="./data/Bottom/T--CPU_CHINA--emailLogo.png" alt="">
+                        <p>cpu_china2021@163.com</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://international.cpu.edu.cn/">
+                        <img src="./data/Bottom/T--CPU_CHINA--CPUlogo.png" alt="">
+                        <p>Interational Communication</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/VueJS &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script
+        src="https://2021.igem.org/wiki/index.php?title= Template:CPU_CHINA/Jquery &action=raw&amp;ctype=text/javascript">
+        </script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>
